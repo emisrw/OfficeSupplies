@@ -1,0 +1,56 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+    transition: all 0.3s ease-in-out;
+    @include padding(5, 10, top);
+    @include padding(5, 10, bottom);
+    @include padding(12, 30, left);
+    @include padding(12, 30, right);
+    border-radius: 50px;
+
+    &__checkout {
+        background-color: $jazzberry;
+        color: #fff;
+
+        &:hover {
+            background-color: $violet;
+        }
+    }
+
+    &__readmore {
+        background-color: rgba(21, 145, 160, 0.1);
+        border: 1px solid $turquoise;
+    }
+
+    &__buy {
+        margin: 10px 0;
+        background-color: $jazzberry;
+        color: #fff;
+        flex: 0 1 130px;
+
+        @include mq(bp-414, max) {
+            flex: 1 1 130px;
+        }
+
+        &:hover {
+            background-color: $violet;
+        }
+    }
+
+    &__search {
+        border-radius: 0;
+        height: 42px;
+        line-height: 1;
+        border: 1px solid #ddd;
+
+        &:hover {
+            color: #fff;
+            background-color: $violet;
+        }
+    }
+}

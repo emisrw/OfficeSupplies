@@ -1,0 +1,140 @@
+$breakpoints: ('bp-360': 360px,
+  // 1-Mobile
+  'bp-375': 375px,
+  // 2-Mobile
+  'bp-414': 414px,
+  // 3-Mobile
+  'bp-768': 768px,
+  // 1-Tablet
+  'bp-800': 800px,
+  // 2-Tablet
+  'bp-992': 992px,
+  // 3-Tablet
+  'bp-1024': 1024px,
+  // 4-Tablet
+  'bp-1366': 1366px,
+  // 1-Desktop
+  'bp-1920': 1920px,
+  // 2-Desktop
+  'bp-1536': 1536px,
+  // 3-Desktop
+  'bp-1440': 1440px,
+  // 4-Desktop
+  'bp-1280': 1280px,
+  // 5-Desktop
+  'bp-2560': 2560px,
+);
+
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+
+    @if $type==max {
+      $width: $width - 0.02px;
+    }
+
+    @media screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+/**********************************************************/
+//////////////
+// Padding //
+/////////////
+@mixin padding($min, $max, $type) {
+  $min-vw: 320;
+  $max-vw: 1920;
+
+  & {
+    padding-#{$type}: #{$min}px;
+
+    @media screen and (min-width: #{$min-vw}px) {
+      padding-#{$type}: calc(#{$min}px + (#{$max} - #{$min}) * ((100vw - #{$min-vw}px) / (#{$max-vw} - #{$min-vw})));
+    }
+
+    @media screen and (min-width: #{$max-vw}px) {
+      padding-#{$type}: #{$max}px;
+    }
+  }
+}
+
+/////////////
+// Margin //
+////////////
+@mixin margin($min, $max, $type) {
+  $min-vw: 320;
+  $max-vw: 1920;
+
+  & {
+    margin-#{$type}: #{$min}px;
+
+    @media screen and (min-width: #{$min-vw}px) {
+      margin-#{$type}: calc(#{$min}px + (#{$max} - #{$min}) * ((100vw - #{$min-vw}px) / (#{$max-vw} - #{$min-vw})));
+    }
+
+    @media screen and (min-width: #{$max-vw}px) {
+      margin-#{$type}: #{$max}px;
+    }
+  }
+}
+
+.hidden-sm-down {
+  @include mq(bp-768, max) {
+    display: none;
+  }
+}
+
+.hidden-md-down {
+  @include mq(bp-992, max) {
+    display: none;
+  }
+}
+
+.hidden-md-up {
+  @include mq(bp-992) {
+    display: none !important;
+  }
+}
+
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+
+  @media (min-width: 1336px) {
+    max-width: 1240px;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 1340px;
+  }
+
+  @media (min-width: 1536px) {
+    max-width: 1440px;
+  }
+
+  @media (min-width: 1700px) {
+    max-width: 1530px;
+  }
+}

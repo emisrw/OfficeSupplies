@@ -1,0 +1,65 @@
+/* --- */
+/* SVG */
+/* --- */
+// Test
+@mixin svg($width) {
+  width: #{$width}px;
+  max-width: calc(#{$width} * 100vw / 1920);
+
+  @media screen and (max-width: 768px) {
+    min-width: calc(#{strip-unit($width / 1.5px)}px);
+    max-width: calc(#{$width} * 100vw / 768);
+  }
+}
+
+/* ------ */
+/* Center */
+/* ------ */
+@mixin center($position) {
+  @if $position == 'vertical' {
+    top: 50%;
+    transform: translateY(-50%);
+  } @else if $position == 'horizontal' {
+    left: 50%;
+    transform: translate(-50%);
+  } @else if $position == 'flex' {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } @else if $position == 'both' {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* --- */
+/* IMG */
+/* --- */
+@mixin img($min, $max, $type: width) {
+  $min-vw: 320px;
+  $max-vw: 1920px;
+
+  & {
+    #{$type}: $min;
+
+    @media screen and (min-width: $min-vw) {
+      #{$type}: calc(
+        #{$min} + #{strip-unit($max - $min)} *
+          ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+      );
+    }
+
+    @media screen and (min-width: 1920px) {
+      #{$type}: $max;
+    }
+  }
+}
+
+/* ------ */
+/* Pseudo */
+/* ------ */
+@mixin pseudo($pos: absolute, $content: '') {
+  content: $content;
+  position: $pos;
+}

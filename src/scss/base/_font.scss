@@ -1,0 +1,93 @@
+/**********************/
+/* ~*~ Font size ~*~ */
+/*********************/
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fontr($min-font-size, $max-font-size, $font-weight: 400) {
+  $min-vw: 320px;
+
+  $max-vw: 2560px;
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1==$u2 and $u1==$u3 and $u1==$u4 {
+    & {
+      font-size: $min-font-size;
+      font-weight: $font-weight;
+
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+
+      @media screen and (min-width: 1920px) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+/***********************/
+/* ~*~ Line height ~*~ */
+/***********************/
+@mixin lineh($min-font-size, $max-font-size) {
+  $min-vw: 320px;
+  $max-vw: 1920px;
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+  $min-font: $min-font-size;
+  $max-font: $max-font-size;
+
+  @if $u1==$u2 and $u1==$u3 and $u1==$u4 {
+    & {
+      line-height: $min-font;
+
+      @media screen and (min-width: $min-vw) {
+        line-height: calc(
+          #{$min-font} + #{strip-unit($max-font - $min-font)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+
+      @media screen and (min-width: $max-vw) {
+        line-height: $max-font;
+      }
+    }
+  }
+}
+
+/*********************/
+/* ~*~ Tracking ~*~ */
+/********************/
+@function tracking($target) {
+  @return ($target / 1000) * 1em;
+}
+
+@mixin tracking($target) {
+  letter-spacing: tracking($target);
+}
+
+body {
+  color: #707070;
+  @include fontr(14px, 18px);
+  line-height: 1.6;
+}
+
+/*********************/
+/* ~*~ Tracking ~*~ */
+/********************/
+@function letter-spacing($target) {
+  @return ($target / 1000) * 1em;
+}
+
+@mixin letter-spacing($target) {
+  letter-spacing: letter-spacing($target);
+}

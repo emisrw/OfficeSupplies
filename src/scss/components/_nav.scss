@@ -1,0 +1,36 @@
+.nav {
+  background-color: $turquoise_darker;
+}
+
+.main-nav {
+  display: flex;
+
+  @include mq(bp-992, max) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 0;
+    visibility: hidden;
+    transition: all 0.4s;
+
+    &.open {
+      max-height: 400px;
+      visibility: visible;
+    }
+  }
+
+  &__item {
+    margin-right: 4px;
+  }
+
+  &__link {
+    display: flex;
+    padding: 14px 22px;
+    transition: all 0.3s;
+    color: #fff;
+
+    &:hover {
+      background-color: $turquoise;
+    }
+  }
+}

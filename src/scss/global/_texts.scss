@@ -1,0 +1,15 @@
+%heading {
+    $font-family: $base-font;
+    font-weight: 700;
+}
+
+.heading-1 {
+    @extend %heading;
+    @include fontr(36px, 72px);
+}
+
+.heading-2 {
+    @extend %heading;
+    @include fontr(18px, 24px);
+}
+

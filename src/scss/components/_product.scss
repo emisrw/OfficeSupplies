@@ -1,0 +1,140 @@
+.content {
+  @include mq(bp-768) {
+    padding: 30px 0;
+  }
+}
+
+.product {
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+
+    @include mq(bp-992) {
+      display: grid;
+      column-gap: 30px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(4, minmax(110px, 1fr));
+    }
+  }
+
+  &__col-gallery {
+    margin: 20px 0;
+
+    @include mq(bp-992) {
+      margin: 0;
+      grid-row: 1 / 5;
+    }
+  }
+
+  &__col-info {
+    grid-row: 1 / 1;
+
+    @include mq(bp-992, max) {
+      order: -1;
+    }
+  }
+
+  &__col-description {
+    @include mq(bp-992) {
+      grid-column: 2 / 4;
+      grid-row: 2/ 4;
+    }
+  }
+
+
+  &__title {
+    @include fontr(22px, 36px, 900);
+    color: #111;
+    margin-bottom: 10px;
+  }
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid $turquoise_darker;
+    padding: 5px 15px;
+    background-color: rgba(21, 145, 160, 0.1);
+    margin-bottom: 15px;
+  }
+
+  &__select {
+    min-width: 130px;
+  }
+
+  &__old-price {
+    text-decoration: line-through;
+  }
+
+  &__price-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__price {
+    @include fontr(18px, 26px, 900);
+    color: $turquoise_darker;
+  }
+}
+
+.product-boxes {
+  padding: 60px 0;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.product-box {
+  padding: 15px;
+  width: 100%;
+
+  &__inner {
+    padding: 30px 15px;
+
+    background-image: url(../images/paper1.jpg);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.3s;
+    box-shadow: 3px 3px 14px -9px rgba(0, 0, 0, 0.75);
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 3px 3px 14px -12px rgba(0, 0, 0, 0.75);
+    }
+
+    @include mq(bp-992) {
+      padding: 25px;
+    }
+  }
+
+  &__title {
+    @include fontr(16px, 22px, 900);
+    color: #111;
+    margin-bottom: 14px;
+  }
+}
+
+.product__desc {
+  font-size: 1.4rem;
+}
+
+#read-more-text {
+  //max-height: 200px;
+  display: block;
+  overflow: hidden;
+}
+
+.readmore {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  hr {
+    display: block;
+    height: 1px;
+    background-color: #111;
+  }
+}
