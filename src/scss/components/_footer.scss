@@ -1,89 +1,100 @@
 .footer {
-    background-color: $turquoise;
-    @include padding(30, 70, top);
-    @include padding(30, 70, bottom);
-    color: #fff;
+  background-color: $turquoise;
+  @include padding(30, 70, top);
+  @include padding(30, 70, bottom);
+  color: #fff;
 
-    a {
-        transition: color 0.3s;
+  @include mq(bp-992, max) {
+    text-align: center;
+  }
 
-        &:hover {
-            color: $violet;
-        }
+  a {
+    transition: color 0.3s;
+
+    &:hover {
+      color: $violet;
+    }
+  }
+
+  &__logo {
+
+    padding: 10px 0;
+    max-width: 180px;
+    margin: 0 auto;
+
+    @include mq(bp-992) {
+      max-width: 260px;
+      margin-left: 0;
     }
 
-    &__logo {
+    img {
+      width: 100%;
+    }
 
-        padding: 10px 0;
-        max-width: 180px;
+  }
 
-        @include mq(bp-992) {
-            max-width: 260px;
-        }
+  &__info {
+    padding: 10px 30px 10px 0;
+    @include fontr(14px, 16px, 300);
+  }
 
-        img {
-            width: 100%;
-        }
+
+  &__col {
+
+    width: 100%;
+
+    @include mq(bp-992) {
+      padding: 10px 15px;
+
+      ul {
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+      }
 
     }
 
-
-
-    &__info {
-        padding: 10px 30px 10px 0;
-        @include fontr(14px, 16px, 300);
-    }
-
-
-    &__col {
-        padding: 10px 15px;
-        width: 100%;
-
-        ul {
-            columns: 2;
-            -webkit-columns: 2;
-            -moz-columns: 2;
-        }
-    }
+  }
 
 
 }
 
 .social {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+
+  @include mq(bp-992) {
+    justify-content: flex-end;
+    padding-top: 0;
+  }
+
+
+  &__icon {
     display: flex;
-    justify-content: center;
+    width: 35px;
+    height: 35px;
+    margin: 0 5px;
 
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: all 0.3s;
 
-    @include mq(bp-992) {
-        justify-content: flex-end;
+    &:hover {
+      transform: scale(1.1);
     }
 
-
-    &__icon {
-        display: flex;
-        width: 35px;
-        height: 35px;
-        margin: 0 5px;
-
-        background-repeat: no-repeat;
-        background-size: contain;
-        transition: all 0.3s;
-
-        &:hover {
-            transform: scale(1.1);
-        }
-
-        &--facebook {
-            background-image: url('../images/facebook_icon@2x.png');
-        }
-
-        &--twitter {
-            background-image: url('../images/twitter_icon@2x.png');
-        }
-
-        &--linkedin {
-            background-image: url('../images/linkedin_icon@2x.png');
-        }
+    &--facebook {
+      background-image: url('../images/facebook_icon@2x.png');
     }
+
+    &--twitter {
+      background-image: url('../images/twitter_icon@2x.png');
+    }
+
+    &--linkedin {
+      background-image: url('../images/linkedin_icon@2x.png');
+    }
+  }
 
 }
