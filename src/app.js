@@ -31,7 +31,7 @@ const readMore = (
   text.style.maxHeight = maxHeight + "px";
   button.addEventListener("click", () => {
     if (!button.classList.contains("open")) {
-      text.style.maxHeight = initialHeight + "px";
+      text.style.maxHeight = initialHeight + 20 + "px";
       button.classList.add("open");
       button.textContent = "Read less";
     } else {
